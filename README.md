@@ -19,6 +19,10 @@ ROMSneeze focuses on ROM hacks, especially Kaizo, across different games and sys
 
 ## Site
 
+**Live site:** https://serialfirelewis.github.io/ROMSneeze/
+
+**Repository:** https://github.com/SerialfireLewis/ROMSneeze
+
 Open `index.html` directly, or serve the repository as a static site with GitHub Pages.
 
 ## Contributing
