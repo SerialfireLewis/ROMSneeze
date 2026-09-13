@@ -3,107 +3,162 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="ROMSneeze — a stupidly simple catalog of good ROM hacks.">
 <title>ROMSneeze</title>
 <style>
-body{font-family:monospace;margin:24px;max-width:1050px}button{font:inherit;margin:2px;padding:4px 8px}input{font:inherit;padding:5px;width:280px;max-width:90%}a{color:inherit}section{margin:28px 0}article{border:1px solid #999;padding:10px;margin:8px 0}.hidden{display:none}.tag{font-size:.8em;opacity:.7}#count{margin-left:8px;opacity:.7}
+:root{color-scheme:light dark;--bg:#fff;--fg:#111;--muted:#666;--line:#bbb;--panel:#f5f5f5;--accent:#111}
+@media(prefers-color-scheme:dark){:root{--bg:#111;--fg:#eee;--muted:#aaa;--line:#444;--panel:#191919;--accent:#eee}}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}a{color:inherit}main{width:min(1100px,calc(100% - 32px));margin:0 auto;padding:28px 0 60px}header{border-bottom:1px solid var(--line);padding-bottom:20px;margin-bottom:20px}h1{font-size:32px;margin:0 0 4px}h2{font-size:20px;margin:30px 0 12px}.sub{color:var(--muted);margin:0}.toolbar{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 94%,transparent);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);padding:12px 0}.controls{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.search{flex:1 1 260px;min-width:180px}input,button{font:inherit;color:inherit;background:var(--bg);border:1px solid var(--line);border-radius:3px;padding:7px 9px}button{cursor:pointer}button:hover,button.active{background:var(--fg);color:var(--bg);border-color:var(--fg)}#count{color:var(--muted);font-size:12px;margin-left:auto}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:10px}.hack{border:1px solid var(--line);padding:14px;background:var(--panel);display:flex;flex-direction:column;min-height:145px}.hack.hidden{display:none}.top{display:flex;justify-content:space-between;gap:10px}.name{font-weight:700;font-size:16px}.level{white-space:nowrap;border:1px solid var(--line);padding:1px 5px;font-size:11px}.meta{color:var(--muted);font-size:12px;margin:5px 0 9px}.desc{font-size:13px;flex:1}.links{display:flex;gap:7px;flex-wrap:wrap;margin-top:12px}.link{border:1px solid var(--fg);padding:5px 8px;text-decoration:none;font-size:12px}.link:hover{background:var(--fg);color:var(--bg)}.empty{display:none;border:1px dashed var(--line);padding:20px;color:var(--muted)}.notice{border:1px solid var(--line);padding:12px;margin:18px 0;font-size:13px}.ladder{display:flex;flex-wrap:wrap;gap:5px;margin:8px 0}.pill{border:1px solid var(--line);padding:4px 7px;font-size:11px}.hidden-section{display:none}footer{border-top:1px solid var(--line);margin-top:35px;padding-top:15px;color:var(--muted);font-size:12px}@media(max-width:600px){main{width:min(100% - 20px,1100px);padding-top:18px}h1{font-size:27px}.grid{grid-template-columns:1fr}.toolbar{position:static}#count{margin-left:0;width:100%}}
 </style>
 </head>
 <body>
+<main>
+<header>
 <h1>ROMSneeze</h1>
-<p>rom hacks worth playing. patches and official/project pages only.</p>
+<p class="sub">rom hacks worth playing. no accounts. no bullshit.</p>
+</header>
 
-<input id="search" type="search" placeholder="search hacks..." oninput="filter()">
+<div class="toolbar">
+<div class="controls">
+<input class="search" id="search" type="search" placeholder="search hacks..." autocomplete="off">
+<button data-filter="all" class="active">all</button>
+<button data-filter="beginner">beginner</button>
+<button data-filter="easy">easy</button>
+<button data-filter="medium">medium</button>
+<button data-filter="hard">hard</button>
+<button data-filter="expert">expert</button>
+<button data-filter="impossible">impossible</button>
 <span id="count"></span>
-<nav>
-<button onclick="setDifficulty('all')">all</button>
-<button onclick="setDifficulty('beginner')">beginner</button>
-<button onclick="setDifficulty('easy')">easy</button>
-<button onclick="setDifficulty('medium')">medium</button>
-<button onclick="setDifficulty('hard')">hard</button>
-<button onclick="setDifficulty('expert')">expert</button>
-<button onclick="setDifficulty('impossible')">impossible</button>
-</nav>
+</div>
+</div>
+
+<div class="notice"><b>How this works:</b> ROMSneeze links you to the actual hack/patch source. It does not host copyrighted base ROMs. For SMW Central hacks, the download is normally a BPS patch inside their ZIP; apply it to your own clean ROM.</div>
 
 <section>
 <h2>Kaizo / Super Mario World</h2>
-<article data-difficulty="beginner"><b>Newbie Kaizo World</b><br>SMW · Beginner<br><small>Short and approachable first Kaizo.</small></article>
-<article data-difficulty="beginner"><b>2Kaizo2Learn</b><br>SMW · Beginner<br><small>Instructional hack focused on individual mechanics.</small><br><a href="https://www.smwcentral.net/?p=section&a=details&id=32593">SMW Central</a></article>
-<article data-difficulty="beginner"><b>Love Yourself</b><br>SMW · Beginner<br><small>Beginner-focused Kaizo with relatively simple setups.</small><br><a href="https://www.smwcentral.net/?p=section&a=details&id=30864">SMW Central</a></article>
-<article data-difficulty="beginner"><b>Super Cindy World 2</b><br>SMW · Beginner</article>
-<article data-difficulty="beginner"><b>Easyland</b><br>SMW · Beginner</article>
-<article data-difficulty="beginner"><b>Beachside Blitz</b><br>SMW · Beginner</article>
-<article data-difficulty="beginner"><b>First Step Forward</b><br>SMW · Beginner</article>
-<article data-difficulty="beginner"><b>Super DGR World</b><br>SMW · Beginner</article>
+<div class="ladder"><span class="pill">beginner → easy → medium → hard → expert → impossible</span></div>
+<div class="grid" id="hackGrid">
 
-<article data-difficulty="easy"><b>Cute Kaizo World</b><br>SMW · Easy<br><small>A popular early step after beginner hacks.</small><br><a href="https://www.smwcentral.net/?p=section&a=details&id=26252">SMW Central</a></article>
-<article data-difficulty="easy"><b>Super Moo World</b><br>SMW · Easy</article>
-<article data-difficulty="easy"><b>Quickie World</b><br>SMW · Easy / Intermediate<br><small>One of the most common starting points for Kaizo.</small><br><a href="https://www.smwcentral.net/?p=section&a=details&id=17441">SMW Central</a></article>
-<article data-difficulty="easy"><b>Cuter Kaizo World</b><br>SMW · Easy / Intermediate<br><a href="https://www.smwcentral.net/?p=section&a=details&id=30915">SMW Central</a></article>
-<article data-difficulty="easy"><b>Super Gracie World</b><br>SMW · Easy / Intermediate</article>
-<article data-difficulty="easy"><b>Peachy Moat World</b><br>SMW · Easy / Intermediate</article>
-<article data-difficulty="easy"><b>Claustrophobia</b><br>SMW · Easy / Intermediate</article>
+<article class="hack" data-difficulty="beginner" data-name="2Kaizo2Learn">
+<div class="top"><span class="name">2Kaizo2Learn</span><span class="level">beginner</span></div><div class="meta">Super Mario World</div><div class="desc">Instructional Kaizo built around learning individual mechanics.</div><div class="links"><a class="link" href="https://www.smwcentral.net/?p=section&a=details&id=32593" target="_blank" rel="noopener">patch / source</a></div>
+</article>
+<article class="hack" data-difficulty="beginner" data-name="Love Yourself">
+<div class="top"><span class="name">Love Yourself</span><span class="level">beginner</span></div><div class="meta">Super Mario World</div><div class="desc">A relatively approachable entry into Kaizo-style play.</div><div class="links"><a class="link" href="https://www.smwcentral.net/?p=section&a=details&id=30864" target="_blank" rel="noopener">patch / source</a></div>
+</article>
+<article class="hack" data-difficulty="beginner" data-name="Easyland">
+<div class="top"><span class="name">Easyland</span><span class="level">beginner</span></div><div class="meta">Super Mario World</div><div class="desc">Beginner-friendly Kaizo pick.</div><div class="links"><a class="link" href="https://www.smwcentral.net/?p=section&s=smwhacks" target="_blank" rel="noopener">find patch</a></div>
+</article>
+<article class="hack" data-difficulty="beginner" data-name="Super Cindy World 2">
+<div class="top"><span class="name">Super Cindy World 2</span><span class="level">beginner</span></div><div class="meta">Super Mario World</div><div class="desc">A lower-end Kaizo option for building fundamentals.</div><div class="links"><a class="link" href="https://www.smwcentral.net/?p=section&s=smwhacks" target="_blank" rel="noopener">find patch</a></div>
+</article>
+<article class="hack" data-difficulty="easy" data-name="Quickie World">
+<div class="top"><span class="name">Quickie World</span><span class="level">easy</span></div><div class="meta">Super Mario World</div><div class="desc">One of the classic starting points for modern Kaizo.</div><div class="links"><a class="link" href="https://www.smwcentral.net/?p=section&a=details&id=17441" target="_blank" rel="noopener">patch / source</a></div>
+</article>
+<article class="hack" data-difficulty="easy" data-name="Cute Kaizo World">
+<div class="top"><span class="name">Cute Kaizo World</span><span class="level">easy</span></div><div class="meta">Super Mario World</div><div class="desc">A popular early step into Kaizo.</div><div class="links"><a class="link" href="https://www.smwcentral.net/?p=section&a=details&id=26252" target="_blank" rel="noopener">patch / source</a></div>
+</article>
+<article class="hack" data-difficulty="easy" data-name="Cuter Kaizo World">
+<div class="top"><span class="name">Cuter Kaizo World</span><span class="level">easy</span></div><div class="meta">Super Mario World</div><div class="desc">Easy-to-intermediate Kaizo with a clean progression.</div><div class="links"><a class="link" href="https://www.smwcentral.net/?p=section&a=details&id=30915" target="_blank" rel="noopener">patch / source</a></div>
+</article>
+<article class="hack" data-difficulty="easy" data-name="Super Moo World">
+<div class="top"><span class="name">Super Moo World</span><span class="level">easy</span></div><div class="meta">Super Mario World</div><div class="desc">Low-end Kaizo practice.</div><div class="links"><a class="link" href="https://www.smwcentral.net/?p=section&s=smwhacks" target="_blank" rel="noopener">find patch</a></div>
+</article>
+<article class="hack" data-difficulty="medium" data-name="Quickie World 2">
+<div class="top"><span class="name">Quickie World 2</span><span class="level">medium</span></div><div class="meta">Super Mario World</div><div class="desc">A natural step up from the first Quickie World.</div><div class="links"><a class="link" href="https://www.smwcentral.net/?p=section&a=details&id=19279" target="_blank" rel="noopener">patch / source</a></div>
+</article>
+<article class="hack" data-difficulty="medium" data-name="Baby Kaizo World">
+<div class="top"><span class="name">Baby Kaizo World</span><span class="level">medium</span></div><div class="meta">Super Mario World</div><div class="desc">Intermediate Kaizo with a straightforward difficulty curve.</div><div class="links"><a class="link" href="https://www.smwcentral.net/?p=section&a=details&id=19145" target="_blank" rel="noopener">patch / source</a></div>
+</article>
+<article class="hack" data-difficulty="medium" data-name="Take It Easy World">
+<div class="top"><span class="name">Take It Easy World</span><span class="level">medium</span></div><div class="meta">Super Mario World</div><div class="desc">A good bridge into harder Kaizo.</div><div class="links"><a class="link" href="https://www.smwcentral.net/?p=section&a=details&id=23272" target="_blank" rel="noopener">patch / source</a></div>
+</article>
+<article class="hack" data-difficulty="medium" data-name="Bunbun World">
+<div class="top"><span class="name">Bunbun World</span><span class="level">medium</span></div><div class="meta">Super Mario World · 19 exits</div><div class="desc">Polished vanilla-style Kaizo with a more advanced feel.</div><div class="links"><a class="link" href="https://www.smwcentral.net/?p=section&a=details&id=20177" target="_blank" rel="noopener">patch / source</a></div>
+</article>
+<article class="hack" data-difficulty="medium" data-name="Akogare Mario World">
+<div class="top"><span class="name">Akogare Mario World</span><span class="level">medium</span></div><div class="meta">Super Mario World</div><div class="desc">A well-known step into more advanced Kaizo.</div><div class="links"><a class="link" href="https://www.smwcentral.net/?p=section&s=smwhacks" target="_blank" rel="noopener">find patch</a></div>
+</article>
+<article class="hack" data-difficulty="medium" data-name="Super Cool World">
+<div class="top"><span class="name">Super Cool World</span><span class="level">medium</span></div><div class="meta">Super Mario World</div><div class="desc">Advanced Kaizo with a strong reputation in the scene.</div><div class="links"><a class="link" href="https://www.smwcentral.net/?p=section&s=smwhacks" target="_blank" rel="noopener">find patch</a></div>
+</article>
+<article class="hack" data-difficulty="medium" data-name="Ultraviolet">
+<div class="top"><span class="name">Ultraviolet</span><span class="level">medium</span></div><div class="meta">Super Mario World</div><div class="desc">Advanced Kaizo with more technical setups.</div><div class="links"><a class="link" href="https://www.smwcentral.net/?p=section&s=smwhacks" target="_blank" rel="noopener">find patch</a></div>
+</article>
+<article class="hack" data-difficulty="hard" data-name="Invictus">
+<div class="top"><span class="name">Invictus</span><span class="level">hard</span></div><div class="meta">Super Mario World</div><div class="desc">A landmark chocolate Kaizo hack with custom mechanics and demanding execution.</div><div class="links"><a class="link" href="https://www.smwcentral.net/?p=section&s=smwhacks" target="_blank" rel="noopener">find patch</a></div>
+</article>
+<article class="hack" data-difficulty="hard" data-name="Kaizo Mario World">
+<div class="top"><span class="name">Kaizo Mario World</span><span class="level">hard</span></div><div class="meta">Super Mario World · classic</div><div class="desc">The hack that gave the genre its name and its reputation.</div><div class="links"><a class="link" href="https://www.smwcentral.net/?p=section&a=details&id=321" target="_blank" rel="noopener">patch / source</a></div>
+</article>
+<article class="hack" data-difficulty="hard" data-name="Kaizo Mario World 2">
+<div class="top"><span class="name">Kaizo Mario World 2</span><span class="level">hard</span></div><div class="meta">Super Mario World · classic</div><div class="desc">The second classic Kaizo entry.</div><div class="links"><a class="link" href="https://www.smwcentral.net/?p=section&s=smwhacks" target="_blank" rel="noopener">find patch</a></div>
+</article>
+<article class="hack" data-difficulty="hard" data-name="Super Ryu World 2">
+<div class="top"><span class="name">Super Ryu World 2</span><span class="level">hard</span></div><div class="meta">Super Mario World</div><div class="desc">Expert-level platforming and precision.</div><div class="links"><a class="link" href="https://www.smwcentral.net/?p=section&s=smwhacks" target="_blank" rel="noopener">find patch</a></div>
+</article>
+<article class="hack" data-difficulty="hard" data-name="Riff World 2">
+<div class="top"><span class="name">Riff World 2</span><span class="level">hard</span></div><div class="meta">Super Mario World</div><div class="desc">A demanding step beyond the easier expert Kaizo catalog.</div><div class="links"><a class="link" href="https://www.smwcentral.net/?p=section&s=smwhacks" target="_blank" rel="noopener">find patch</a></div>
+</article>
+<article class="hack" data-difficulty="expert" data-name="Super Dram World">
+<div class="top"><span class="name">Super Dram World</span><span class="level">expert</span></div><div class="meta">Super Mario World</div><div class="desc">Classic Western Kaizo and a major genre landmark.</div><div class="links"><a class="link" href="https://www.smwcentral.net/?p=section&s=smwhacks" target="_blank" rel="noopener">find patch</a></div>
+</article>
+<article class="hack" data-difficulty="expert" data-name="Super Panga World">
+<div class="top"><span class="name">Super Panga World</span><span class="level">expert</span></div><div class="meta">Super Mario World</div><div class="desc">Extremely demanding flight and precision sections.</div><div class="links"><a class="link" href="https://www.smwcentral.net/?p=section&s=smwhacks" target="_blank" rel="noopener">find patch</a></div>
+</article>
+<article class="hack" data-difficulty="expert" data-name="Grand Poo World">
+<div class="top"><span class="name">Grand Poo World</span><span class="level">expert</span></div><div class="meta">Super Mario World</div><div class="desc">A major Kaizo classic with a polished vanilla-plus style.</div><div class="links"><a class="link" href="https://www.smwcentral.net/?p=section&s=smwhacks" target="_blank" rel="noopener">find patch</a></div>
+</article>
+<article class="hack" data-difficulty="expert" data-name="Grand Poo World 2">
+<div class="top"><span class="name">Grand Poo World 2</span><span class="level">expert</span></div><div class="meta">Super Mario World</div><div class="desc">Highly technical, polished and brutally demanding.</div><div class="links"><a class="link" href="https://www.smwcentral.net/?p=section&s=smwhacks" target="_blank" rel="noopener">find patch</a></div>
+</article>
+<article class="hack" data-difficulty="expert" data-name="Titan Mario">
+<div class="top"><span class="name">Titan Mario</span><span class="level">expert</span></div><div class="meta">Super Mario World</div><div class="desc">Extreme Kaizo territory for players looking for a serious wall.</div><div class="links"><a class="link" href="https://www.smwcentral.net/?p=section&s=smwhacks" target="_blank" rel="noopener">find patch</a></div>
+</article>
+<article class="hack" data-difficulty="expert" data-name="Sheffy 99">
+<div class="top"><span class="name">Sheffy 99</span><span class="level">expert</span></div><div class="meta">Super Mario World</div><div class="desc">Expert Kaizo around the Invictus range.</div><div class="links"><a class="link" href="https://www.smwcentral.net/?p=section&a=details&id=29776" target="_blank" rel="noopener">patch / source</a></div>
+</article>
+<article class="hack" data-difficulty="impossible" data-name="Grand Poo World 3">
+<div class="top"><span class="name">Grand Poo World 3</span><span class="level">impossible</span></div><div class="meta">Super Mario World · extreme</div><div class="desc">A monster of a hack with custom mechanics and very high technical demands. Use the current legitimate release/source when available.</div><div class="links"><a class="link" href="https://www.smwcentral.net/?p=section&s=smwhacks" target="_blank" rel="noopener">find patch</a></div>
+</article>
 
-<article data-difficulty="medium"><b>Quickie World 2</b><br>SMW · Intermediate<br><small>A natural step up from the first Quickie World.</small><br><a href="https://www.smwcentral.net/?p=section&a=details&id=19279">SMW Central</a></article>
-<article data-difficulty="medium"><b>Baby Kaizo World</b><br>SMW · Intermediate<br><a href="https://www.smwcentral.net/?p=section&a=details&id=19145">SMW Central</a></article>
-<article data-difficulty="medium"><b>Take It Easy World</b><br>SMW · Intermediate<br><a href="https://www.smwcentral.net/?p=section&a=details&id=23272">SMW Central</a></article>
-<article data-difficulty="medium"><b>Bunbun World</b><br>SMW · Advanced<br><small>Polished vanilla-style Kaizo with 19 exits.</small><br><a href="https://www.smwcentral.net/?p=section&a=details&id=20177">SMW Central</a></article>
-<article data-difficulty="medium"><b>Akogare Mario World</b><br>SMW · Advanced</article>
-<article data-difficulty="medium"><b>Super Cool World</b><br>SMW · Advanced</article>
-<article data-difficulty="medium"><b>Ultraviolet</b><br>SMW · Advanced</article>
-<article data-difficulty="medium"><b>Dancer to a Discordant System</b><br>SMW · Advanced</article>
-
-<article data-difficulty="hard"><b>Invictus</b><br>SMW · Expert<br><small>Custom mechanics, gimmicks and precise but generally fair gameplay.</small></article>
-<article data-difficulty="hard"><b>Kaizo Mario World</b><br>SMW · Expert / Classic<br><small>The pioneering Kaizo hack.</small><br><a href="https://www.smwcentral.net/?p=section&a=details&id=321">SMW Central</a></article>
-<article data-difficulty="hard"><b>Kaizo Mario World 2</b><br>SMW · Expert / Classic</article>
-<article data-difficulty="hard"><b>Kaizo Mario World 3</b><br>SMW · Expert / Classic</article>
-<article data-difficulty="hard"><b>Super Ryu World 2</b><br>SMW · Expert</article>
-<article data-difficulty="hard"><b>Riff World 2</b><br>SMW · Expert<br><small>A step beyond Invictus without immediately jumping to Grand Poo World territory.</small></article>
-<article data-difficulty="hard"><b>Super Swunsh World 2</b><br>SMW · Expert</article>
-<article data-difficulty="hard"><b>Baron of Shell</b><br>SMW · Expert</article>
-
-<article data-difficulty="expert"><b>Super Dram World</b><br>SMW · Expert<br><small>Classic Western Kaizo and a major genre landmark.</small></article>
-<article data-difficulty="expert"><b>Super Panga World</b><br>SMW · Extreme<br><small>Extremely difficult, with demanding flight and precision sections.</small></article>
-<article data-difficulty="expert"><b>Grand Poo World</b><br>SMW · Extreme</article>
-<article data-difficulty="expert"><b>Grand Poo World 2</b><br>SMW · Extreme<br><small>Highly technical, polished and brutally demanding.</small></article>
-<article data-difficulty="expert"><b>Titan Mario</b><br>SMW · Extreme</article>
-<article data-difficulty="expert"><b>Sheffy 99</b><br>SMW · Expert<br><small>Listed by its author around Invictus difficulty.</small><br><a href="https://www.smwcentral.net/?p=section&a=details&id=29776">SMW Central</a></article>
-<article data-difficulty="expert"><b>Grand Poo World 2: Kaizo</b><br>SMW · Extreme</article>
-
-<article data-difficulty="impossible"><b>Grand Poo World 3</b><br>SMW · Extreme / Borderline<br><small>Huge technical challenge with custom mechanics and non-platforming sections.</small></article>
-<article data-difficulty="impossible"><b>Super Kaizo World</b><br>SMW · Borderline</article>
+</div>
+<div class="empty" id="empty">nothing matched. try another search or difficulty.</div>
 </section>
 
 <section>
 <h2>Other games</h2>
-<article data-difficulty="hard"><b>Kaizo Mario 64</b><br>Super Mario 64 · Hard</article>
-<article data-difficulty="hard"><b>Return to Subcon</b><br>Super Mario Bros. 2 · Hard</article>
-<article data-difficulty="expert"><b>Kaizo Green Stars</b><br>Super Mario Galaxy 2 · Expert</article>
-<article data-difficulty="expert"><b>Kaizo Mario Bros. 3</b><br>Super Mario Bros. 3 · Expert</article>
-<article data-difficulty="expert"><b>Super Metroid Kaizo Edition</b><br>Super Metroid · Expert</article>
-<article data-difficulty="expert"><b>Super Metroid Impossible</b><br>Super Metroid · Extreme</article>
-<article data-difficulty="hard"><b>Pokémon Emerald Kaizo</b><br>Pokémon Emerald · Hard</article>
-<article data-difficulty="expert"><b>Kaizo Sonic the Hedgehog</b><br>Sonic the Hedgehog · Expert</article>
-<article data-difficulty="expert"><b>Sonic: Painful World Spikes Kaizo</b><br>Sonic · Expert</article>
-<article data-difficulty="expert"><b>Kaizo Robot 64</b><br>Super Mario 64 · Expert</article>
-<article data-difficulty="expert"><b>Super Doot Sunshine</b><br>Super Mario Sunshine · Expert</article>
+<div class="grid">
+<article class="hack" data-difficulty="hard" data-name="Kaizo Mario 64"><div class="top"><span class="name">Kaizo Mario 64</span><span class="level">hard</span></div><div class="meta">Super Mario 64</div><div class="desc">Kaizo-style Mario 64 challenge.</div><div class="links"><a class="link" href="https://www.google.com/search?q=Kaizo+Mario+64+ROM+hack+patch" target="_blank" rel="noopener">find source</a></div></article>
+<article class="hack" data-difficulty="hard" data-name="Return to Subcon"><div class="top"><span class="name">Return to Subcon</span><span class="level">hard</span></div><div class="meta">Super Mario Bros. 2</div><div class="desc">Hard Mario 2 ROM-hack territory.</div><div class="links"><a class="link" href="https://www.google.com/search?q=Return+to+Subcon+ROM+hack+patch" target="_blank" rel="noopener">find source</a></div></article>
+<article class="hack" data-difficulty="hard" data-name="Pokemon Emerald Kaizo"><div class="top"><span class="name">Pokémon Emerald Kaizo</span><span class="level">hard</span></div><div class="meta">Pokémon Emerald</div><div class="desc">A notorious difficulty-focused Pokémon hack.</div><div class="links"><a class="link" href="https://www.google.com/search?q=Pokemon+Emerald+Kaizo+official+patch" target="_blank" rel="noopener">find source</a></div></article>
+<article class="hack" data-difficulty="expert" data-name="Kaizo Mario Bros. 3"><div class="top"><span class="name">Kaizo Mario Bros. 3</span><span class="level">expert</span></div><div class="meta">Super Mario Bros. 3</div><div class="desc">Kaizo treatment for SMB3.</div><div class="links"><a class="link" href="https://www.google.com/search?q=Kaizo+Mario+Bros+3+patch" target="_blank" rel="noopener">find source</a></div></article>
+<article class="hack" data-difficulty="expert" data-name="Super Metroid Kaizo Edition"><div class="top"><span class="name">Super Metroid Kaizo Edition</span><span class="level">expert</span></div><div class="meta">Super Metroid</div><div class="desc">Precision-focused Super Metroid hacking.</div><div class="links"><a class="link" href="https://www.google.com/search?q=Super+Metroid+Kaizo+Edition+patch" target="_blank" rel="noopener">find source</a></div></article>
+<article class="hack" data-difficulty="expert" data-name="Super Metroid Impossible"><div class="top"><span class="name">Super Metroid Impossible</span><span class="level">expert</span></div><div class="meta">Super Metroid</div><div class="desc">An intentionally brutal Super Metroid challenge.</div><div class="links"><a class="link" href="https://www.google.com/search?q=Super+Metroid+Impossible+ROM+hack+patch" target="_blank" rel="noopener">find source</a></div></article>
+</div>
 </section>
 
+<footer>
+ROMSneeze is a catalog, not a ROM host. Keep your own legally obtained base ROMs. Patch files belong to their respective authors/sites.
+<br><br><a href="https://github.com/SerialfireLewis/ROMSneeze">source on GitHub</a> · <a href="https://www.smwcentral.net/?p=section&s=smwhacks">SMW Central hack archive</a>
+</footer>
+</main>
 <script>
+const cards=[...document.querySelectorAll('.hack')];
+const search=document.getElementById('search');
+const count=document.getElementById('count');
+const empty=document.getElementById('empty');
 let difficulty='all';
-function setDifficulty(x){difficulty=x;filter()}
-function filter(){
- const q=document.getElementById('search').value.toLowerCase().trim();
- let shown=0;
- document.querySelectorAll('article').forEach(a=>{
-   const matchDifficulty=difficulty==='all'||a.dataset.difficulty===difficulty;
-   const matchSearch=!q||a.textContent.toLowerCase().includes(q);
-   const show=matchDifficulty&&matchSearch;
-   a.classList.toggle('hidden',!show);
-   if(show)shown++;
+function render(){
+ const q=search.value.trim().toLowerCase();let shown=0;
+ cards.forEach(card=>{
+   const text=(card.dataset.name+' '+card.textContent).toLowerCase();
+   const ok=(difficulty==='all'||card.dataset.difficulty===difficulty)&&(!q||text.includes(q));
+   card.classList.toggle('hidden',!ok);if(ok)shown++;
  });
- document.getElementById('count').textContent=shown+' hacks';
+ count.textContent=shown+' hacks';empty.style.display=shown?'none':'block';
 }
-filter();
+document.querySelectorAll('[data-filter]').forEach(btn=>btn.addEventListener('click',()=>{difficulty=btn.dataset.filter;document.querySelectorAll('[data-filter]').forEach(b=>b.classList.toggle('active',b===btn));render()}));
+search.addEventListener('input',render);render();
 </script>
 </body>
 </html>
