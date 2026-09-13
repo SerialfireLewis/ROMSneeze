@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ROMSneeze</title>
+<style>
+body{font-family:monospace;margin:24px;max-width:1000px}button{font:inherit;margin:2px;padding:4px 8px}a{color:inherit}section{margin:28px 0}article{border:1px solid #999;padding:10px;margin:8px 0}small{opacity:.7}.hidden{display:none}
+</style>
+</head>
+<body>
+<h1>ROMSneeze</h1>
+<p>rom hacks worth playing. patches and official/project pages only.</p>
+
+<nav>
+<button onclick="filter('all')">all</button>
+<button onclick="filter('beginner')">beginner</button>
+<button onclick="filter('easy')">easy</button>
+<button onclick="filter('medium')">medium</button>
+<button onclick="filter('hard')">hard</button>
+<button onclick="filter('expert')">expert</button>
+<button onclick="filter('impossible')">impossible</button>
+</nav>
+
+<section>
+<h2>Kaizo / Super Mario World</h2>
+
+<article data-difficulty="beginner"><b>Newbie Kaizo World</b><br>SMW · Beginner<br><small>Short, approachable introduction to Kaizo.</small><br><a href="https://www.smwcentral.net/?p=section&a=details&id=">SMW Central</a></article>
+<article data-difficulty="beginner"><b>Love Yourself</b><br>SMW · Beginner<br><small>Designed to teach the fundamentals of Kaizo movement.</small><br><a href="https://www.smwcentral.net/?p=section&a=details&id=30864">SMW Central</a></article>
+<article data-difficulty="beginner"><b>2Kaizo2Learn</b><br>SMW · Beginner<br><small>A learning-oriented entry point for modern Kaizo.</small><br><a href="https://www.smwcentral.net/?p=section&a=details&id=32593">SMW Central</a></article>
+<article data-difficulty="easy"><b>Super Moo World</b><br>SMW · Easy</article>
+<article data-difficulty="easy"><b>Cute Kaizo World</b><br>SMW · Easy</article>
+<article data-difficulty="easy"><b>Quickie World</b><br>SMW · Easy / Intermediate<br><small>A famous beginner-friendly Kaizo series.</small><br><a href="https://www.smwcentral.net/?p=section&a=details&id=17441">SMW Central</a></article>
+<article data-difficulty="medium"><b>Quickie World 2</b><br>SMW · Intermediate</article>
+<article data-difficulty="medium"><b>Baby Kaizo World</b><br>SMW · Intermediate</article>
+<article data-difficulty="medium"><b>Super DGR World</b><br>SMW · Intermediate</article>
+<article data-difficulty="hard"><b>Invictus</b><br>SMW · Expert<br><small>Gimmick-heavy, precise and highly regarded.</small></article>
+<article data-difficulty="hard"><b>Kaizo Mario World</b><br>SMW · Expert / Classic<br><small>The hack that helped define the genre.</small></article>
+<article data-difficulty="hard"><b>Kaizo Mario World 2</b><br>SMW · Expert / Classic</article>
+<article data-difficulty="hard"><b>Kaizo Mario World 3</b><br>SMW · Expert / Classic</article>
+<article data-difficulty="expert"><b>Super Dram World</b><br>SMW · Expert<br><small>Classic Western Kaizo with deliberately nasty sections.</small></article>
+<article data-difficulty="expert"><b>Super Panga World</b><br>SMW · Expert / Extreme<br><small>Known for difficult flight and precision.</small></article>
+<article data-difficulty="expert"><b>Grand Poo World 2</b><br>SMW · Expert / Extreme</article>
+<article data-difficulty="impossible"><b>Grand Poo World 3</b><br>SMW · Extreme / Borderline<br><small>For players who have already made questionable life choices.</small></article>
+</section>
+
+<section>
+<h2>Other hacks</h2>
+<article data-difficulty="medium"><b>Kaizo Mario 64</b><br>Super Mario 64 · Hard</article>
+<article data-difficulty="hard"><b>Kaizo 64</b><br>Super Mario 64 · Expert</article>
+<article data-difficulty="hard"><b>Kaizo Green Stars</b><br>Super Mario Galaxy 2 · Expert</article>
+</section>
+
+<script>
+function filter(x){document.querySelectorAll('article').forEach(a=>a.classList.toggle('hidden',x!=='all'&&a.dataset.difficulty!==x))}
+</script>
+</body>
+</html>
