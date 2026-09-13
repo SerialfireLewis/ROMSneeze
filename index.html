@@ -5,21 +5,23 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>ROMSneeze</title>
 <style>
-body{font-family:monospace;margin:24px;max-width:1050px}button{font:inherit;margin:2px;padding:4px 8px}a{color:inherit}section{margin:28px 0}article{border:1px solid #999;padding:10px;margin:8px 0}.hidden{display:none}.tag{font-size:.8em;opacity:.7}
+body{font-family:monospace;margin:24px;max-width:1050px}button{font:inherit;margin:2px;padding:4px 8px}input{font:inherit;padding:5px;width:280px;max-width:90%}a{color:inherit}section{margin:28px 0}article{border:1px solid #999;padding:10px;margin:8px 0}.hidden{display:none}.tag{font-size:.8em;opacity:.7}#count{margin-left:8px;opacity:.7}
 </style>
 </head>
 <body>
 <h1>ROMSneeze</h1>
 <p>rom hacks worth playing. patches and official/project pages only.</p>
 
+<input id="search" type="search" placeholder="search hacks..." oninput="filter()">
+<span id="count"></span>
 <nav>
-<button onclick="filter('all')">all</button>
-<button onclick="filter('beginner')">beginner</button>
-<button onclick="filter('easy')">easy</button>
-<button onclick="filter('medium')">medium</button>
-<button onclick="filter('hard')">hard</button>
-<button onclick="filter('expert')">expert</button>
-<button onclick="filter('impossible')">impossible</button>
+<button onclick="setDifficulty('all')">all</button>
+<button onclick="setDifficulty('beginner')">beginner</button>
+<button onclick="setDifficulty('easy')">easy</button>
+<button onclick="setDifficulty('medium')">medium</button>
+<button onclick="setDifficulty('hard')">hard</button>
+<button onclick="setDifficulty('expert')">expert</button>
+<button onclick="setDifficulty('impossible')">impossible</button>
 </nav>
 
 <section>
@@ -30,11 +32,16 @@ body{font-family:monospace;margin:24px;max-width:1050px}button{font:inherit;marg
 <article data-difficulty="beginner"><b>Super Cindy World 2</b><br>SMW · Beginner</article>
 <article data-difficulty="beginner"><b>Easyland</b><br>SMW · Beginner</article>
 <article data-difficulty="beginner"><b>Beachside Blitz</b><br>SMW · Beginner</article>
+<article data-difficulty="beginner"><b>First Step Forward</b><br>SMW · Beginner</article>
+<article data-difficulty="beginner"><b>Super DGR World</b><br>SMW · Beginner</article>
 
 <article data-difficulty="easy"><b>Cute Kaizo World</b><br>SMW · Easy<br><small>A popular early step after beginner hacks.</small><br><a href="https://www.smwcentral.net/?p=section&a=details&id=26252">SMW Central</a></article>
 <article data-difficulty="easy"><b>Super Moo World</b><br>SMW · Easy</article>
 <article data-difficulty="easy"><b>Quickie World</b><br>SMW · Easy / Intermediate<br><small>One of the most common starting points for Kaizo.</small><br><a href="https://www.smwcentral.net/?p=section&a=details&id=17441">SMW Central</a></article>
 <article data-difficulty="easy"><b>Cuter Kaizo World</b><br>SMW · Easy / Intermediate<br><a href="https://www.smwcentral.net/?p=section&a=details&id=30915">SMW Central</a></article>
+<article data-difficulty="easy"><b>Super Gracie World</b><br>SMW · Easy / Intermediate</article>
+<article data-difficulty="easy"><b>Peachy Moat World</b><br>SMW · Easy / Intermediate</article>
+<article data-difficulty="easy"><b>Claustrophobia</b><br>SMW · Easy / Intermediate</article>
 
 <article data-difficulty="medium"><b>Quickie World 2</b><br>SMW · Intermediate<br><small>A natural step up from the first Quickie World.</small><br><a href="https://www.smwcentral.net/?p=section&a=details&id=19279">SMW Central</a></article>
 <article data-difficulty="medium"><b>Baby Kaizo World</b><br>SMW · Intermediate<br><a href="https://www.smwcentral.net/?p=section&a=details&id=19145">SMW Central</a></article>
@@ -43,6 +50,7 @@ body{font-family:monospace;margin:24px;max-width:1050px}button{font:inherit;marg
 <article data-difficulty="medium"><b>Akogare Mario World</b><br>SMW · Advanced</article>
 <article data-difficulty="medium"><b>Super Cool World</b><br>SMW · Advanced</article>
 <article data-difficulty="medium"><b>Ultraviolet</b><br>SMW · Advanced</article>
+<article data-difficulty="medium"><b>Dancer to a Discordant System</b><br>SMW · Advanced</article>
 
 <article data-difficulty="hard"><b>Invictus</b><br>SMW · Expert<br><small>Custom mechanics, gimmicks and precise but generally fair gameplay.</small></article>
 <article data-difficulty="hard"><b>Kaizo Mario World</b><br>SMW · Expert / Classic<br><small>The pioneering Kaizo hack.</small><br><a href="https://www.smwcentral.net/?p=section&a=details&id=321">SMW Central</a></article>
@@ -51,6 +59,7 @@ body{font-family:monospace;margin:24px;max-width:1050px}button{font:inherit;marg
 <article data-difficulty="hard"><b>Super Ryu World 2</b><br>SMW · Expert</article>
 <article data-difficulty="hard"><b>Riff World 2</b><br>SMW · Expert<br><small>A step beyond Invictus without immediately jumping to Grand Poo World territory.</small></article>
 <article data-difficulty="hard"><b>Super Swunsh World 2</b><br>SMW · Expert</article>
+<article data-difficulty="hard"><b>Baron of Shell</b><br>SMW · Expert</article>
 
 <article data-difficulty="expert"><b>Super Dram World</b><br>SMW · Expert<br><small>Classic Western Kaizo and a major genre landmark.</small></article>
 <article data-difficulty="expert"><b>Super Panga World</b><br>SMW · Extreme<br><small>Extremely difficult, with demanding flight and precision sections.</small></article>
@@ -58,13 +67,16 @@ body{font-family:monospace;margin:24px;max-width:1050px}button{font:inherit;marg
 <article data-difficulty="expert"><b>Grand Poo World 2</b><br>SMW · Extreme<br><small>Highly technical, polished and brutally demanding.</small></article>
 <article data-difficulty="expert"><b>Titan Mario</b><br>SMW · Extreme</article>
 <article data-difficulty="expert"><b>Sheffy 99</b><br>SMW · Expert<br><small>Listed by its author around Invictus difficulty.</small><br><a href="https://www.smwcentral.net/?p=section&a=details&id=29776">SMW Central</a></article>
+<article data-difficulty="expert"><b>Grand Poo World 2: Kaizo</b><br>SMW · Extreme</article>
 
 <article data-difficulty="impossible"><b>Grand Poo World 3</b><br>SMW · Extreme / Borderline<br><small>Huge technical challenge with custom mechanics and non-platforming sections.</small></article>
+<article data-difficulty="impossible"><b>Super Kaizo World</b><br>SMW · Borderline</article>
 </section>
 
 <section>
 <h2>Other games</h2>
 <article data-difficulty="hard"><b>Kaizo Mario 64</b><br>Super Mario 64 · Hard</article>
+<article data-difficulty="hard"><b>Return to Subcon</b><br>Super Mario Bros. 2 · Hard</article>
 <article data-difficulty="expert"><b>Kaizo Green Stars</b><br>Super Mario Galaxy 2 · Expert</article>
 <article data-difficulty="expert"><b>Kaizo Mario Bros. 3</b><br>Super Mario Bros. 3 · Expert</article>
 <article data-difficulty="expert"><b>Super Metroid Kaizo Edition</b><br>Super Metroid · Expert</article>
@@ -72,10 +84,26 @@ body{font-family:monospace;margin:24px;max-width:1050px}button{font:inherit;marg
 <article data-difficulty="hard"><b>Pokémon Emerald Kaizo</b><br>Pokémon Emerald · Hard</article>
 <article data-difficulty="expert"><b>Kaizo Sonic the Hedgehog</b><br>Sonic the Hedgehog · Expert</article>
 <article data-difficulty="expert"><b>Sonic: Painful World Spikes Kaizo</b><br>Sonic · Expert</article>
+<article data-difficulty="expert"><b>Kaizo Robot 64</b><br>Super Mario 64 · Expert</article>
+<article data-difficulty="expert"><b>Super Doot Sunshine</b><br>Super Mario Sunshine · Expert</article>
 </section>
 
 <script>
-function filter(x){document.querySelectorAll('article').forEach(a=>a.classList.toggle('hidden',x!=='all'&&a.dataset.difficulty!==x))}
+let difficulty='all';
+function setDifficulty(x){difficulty=x;filter()}
+function filter(){
+ const q=document.getElementById('search').value.toLowerCase().trim();
+ let shown=0;
+ document.querySelectorAll('article').forEach(a=>{
+   const matchDifficulty=difficulty==='all'||a.dataset.difficulty===difficulty;
+   const matchSearch=!q||a.textContent.toLowerCase().includes(q);
+   const show=matchDifficulty&&matchSearch;
+   a.classList.toggle('hidden',!show);
+   if(show)shown++;
+ });
+ document.getElementById('count').textContent=shown+' hacks';
+}
+filter();
 </script>
 </body>
 </html>
